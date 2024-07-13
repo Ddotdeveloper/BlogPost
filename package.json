@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node app.js",
     "build": "yarn client:install && yarn client:build",
-    "server": "nodemon app.js",
+    "server": "node app.js",
     "client" : "yarn --cwd client run start",
     "client:install": "yarn --cwd client add react-scripts --save",
     "client:build": "yarn --cwd client run build",
