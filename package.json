@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "yarn client:install && yarn client:build",
-    "server": "node app.js",
+    "start": "node server.js",
+    "build": "npm install && yarn client:install && yarn client:build",
+    "server": "node server.js",
     "client" : "yarn --cwd client run start",
     "client:install": "yarn --cwd client add react-scripts --save",
     "client:build": "yarn --cwd client run build",
