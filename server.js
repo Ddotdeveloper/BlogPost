@@ -13,6 +13,8 @@ const multer = require('multer');
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs');
 
+const path = require('path');
+
 const salt = bcrypt.genSaltSync(10);
 const secret = process.env.JWT_SECRET;
 
@@ -151,4 +153,16 @@ app.get('/post/:id', async (req, res) => {
   res.json(postDoc);
 })
 
-app.listen(process.env.PORT || 4000);
+// serve up production assets
+app.use(express.static('client/build'));
+
+
+app.get('*', (req,res)=>{
+    res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'))
+})
+
+const PORT = process.env.PORT || 4000
+
+console.log('server started on port:', PORT);
+
+app.listen(PORT);
