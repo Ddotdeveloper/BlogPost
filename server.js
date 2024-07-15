@@ -1,4 +1,5 @@
 require('dotenv').config(); // Add this line at the top of your file
+mongoose.connect(process.env.MONGODB_URI);
 
 const express = require('express');
 const cors = require('cors');
@@ -23,7 +24,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-mongoose.connect(process.env.MONGODB_URI);
 
 app.post('/register', async (req, res) => {
   const { username, password } = req.body;
